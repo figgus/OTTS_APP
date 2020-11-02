@@ -1,5 +1,6 @@
 import './App.css';
 import {Login} from './components/Login';
+import {Dashboard} from './components/dashboard';
 import {Navbar} from './components/Navbar';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import {React} from 'react';
@@ -14,9 +15,15 @@ function App() {
         <Router>
           <Navbar />
             <Switch>
-              <Route path="/">
+              <Route exact path="/">
                 <Login />
               </Route>
+
+              <Route exact path="/dashboard">
+                <Dashboard />
+              </Route>
+
+
             </Switch>
         </Router>
       </Provider>
