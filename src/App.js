@@ -6,11 +6,11 @@ import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import {React} from 'react';
 import {Provider} from 'react-redux'
 import {store} from './redux/redux'
-
+import {AdministrarConductores} from './components/administrarConductores/administrarConductores';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Provider store={store}>
         <Router>
           <Navbar />
@@ -21,6 +21,10 @@ function App() {
 
               <Route exact path="/dashboard">
                 <Dashboard />
+              </Route>
+
+              <Route exact path="/conductores">
+                <AdministrarConductores />
               </Route>
 
 
