@@ -4,9 +4,8 @@ import {GetUrlApi} from '../../globales/VariablesGlobales'
 import swal from 'sweetalert'
 
 export function CrearConductor(){
-
+    const M = window.M;
     const CrearConductor=async ()=>{
-        alert('enviando');
         var data = {}
         data.username = document.getElementById('username').value;
         data.password = document.getElementById('password').value;
@@ -20,12 +19,24 @@ export function CrearConductor(){
         });
         if(res.status===200){
             swal('exito');
+            CerrarModal();
         }
         else{
             swal('error');
         }
     }
 
+    const CerrarModal = () => {
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('primerNombre').value = '';
+        document.getElementById('segundoNombre').value = '';
+        document.getElementById('apellidoPaterno').value = '';
+        document.getElementById('apellidoMaterno').value = '';
+
+        var instanciaTeclado = M.Modal.getInstance(document.getElementById('modalCrearConductor'));
+        instanciaTeclado.close();
+    };
 
     return (
         <div id="modalCrearConductor" className="modal bottom-sheet">
