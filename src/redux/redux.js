@@ -1,7 +1,9 @@
 import {createStore} from 'redux';
 const iniciarSesion='LOGIN';
+const clickUsuario = 'ClickUsuario';
 const initialState={
-    usuario:null
+    usuario:null,
+    usuarioClickeado : null
 }
 
 export const store=createStore(
@@ -17,10 +19,10 @@ function reducer(state,{type,payload}){
             ...state,
             usuario:payload
         }
-        case 'TOGGLE_TODO':
+        case clickUsuario:
             return {
                 ...state,
-                todos:state.todos.map(todo=>(todo.id===payload)?{...todo,complete:!todo.complete}:todo)
+                usuarioClickeado:payload
             }
         case 'DELETE_TODO':
             return {
@@ -39,10 +41,10 @@ export const LoginAction=(usuario)=>(
     }
 )
 
-export const toggleTodoAction = todoid =>(
+export const ClickUsuarioAction = usuario =>(
     {
-        type:'TOGGLE_TODO',
-        payload:todoid
+        type:'ClickUsuario',
+        payload:usuario
     }
 )
 

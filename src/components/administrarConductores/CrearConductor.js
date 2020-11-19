@@ -13,10 +13,15 @@ export function CrearConductor(){
         data.segundoNombre = document.getElementById('segundoNombre').value;
         data.apellidoPaterno = document.getElementById('apellidoPaterno').value;
         data.apellidoMaterno = document.getElementById('apellidoMaterno').value;
-        const res = await axios.post(GetUrlApi()+'/api/usuarios',data).catch((err)=>{
+        const res = await axios.post(GetUrlApi()+'/api/conductores',data).catch((err)=>{
             console.log(err);
-            alert('fallo');
+            swal('la peticion fallo');
+            return
         });
+        if(!res){
+            swal('no hubo respuesta')
+            return
+        }
         if(res.status===200){
             swal('exito');
             CerrarModal();
